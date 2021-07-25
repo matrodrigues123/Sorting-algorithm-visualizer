@@ -33,8 +33,6 @@ function randomArray(min, max) {
 const RenderArray = () => {
   const [array, setArray] = useState(randomArray(5, 100));
   const [swap, setSwap] = useState([]);
-  const [done, setDone] = useState([]);
-  const refresh = () => window.location.reload();
 
   function Sort() {
     let temp = [...array];
@@ -51,20 +49,9 @@ const RenderArray = () => {
           }
           setSwap([...aux]);
           setArray([...temp]);
-        }, 30 * i);
+        }, 60 * i);
       }
-      setTimeout(() => {
-        let complete = [];
-        for (let k = array.length; k >= array.length - i - 1; k--) {
-          complete.push(k);
-          setDone([...complete]);
-        }
-      }, 30 * i);
     }
-    setTimeout(() => {
-      setDone([]);
-      setSwap([]);
-    }, 100);
   }
 
   const bars = array.map((value, idx) => (
